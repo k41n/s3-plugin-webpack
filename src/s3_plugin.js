@@ -271,6 +271,9 @@ module.exports = class S3Plugin {
     if (/\.ico/.test(fileName) && s3Params.ContentEncoding === 'gzip')
       delete s3Params.ContentEncoding
 
+    if (/\.css\.gz/.test(filename))
+      s3Params.ContentType = 'text/css'
+
     upload = this.client.uploadFile({
       localFile: file,
       s3Params
