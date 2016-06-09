@@ -245,7 +245,6 @@ module.exports = class S3Plugin {
         progressValue = calculateProgress() - definedModifier
 
         if (progressValue !== progressTracker) {
-          console.log('progressValue = ', progressValue)
           progressBar.update(progressValue)
           progressTracker = progressValue
         }
@@ -272,8 +271,10 @@ module.exports = class S3Plugin {
     if (/\.ico/.test(fileName) && s3Params.ContentEncoding === 'gzip')
       delete s3Params.ContentEncoding
 
-    if (/\.css\.gz/.test(filename))
+    if (/\.css\.gz/.test(fileName)) {
       s3Params.ContentType = 'text/css'
+      s3Params.ContentEncoding = 'gzip'
+    }
 
     upload = this.client.uploadFile({
       localFile: file,

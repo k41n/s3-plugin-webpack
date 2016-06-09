@@ -390,7 +390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var progressBar = new _progress2.default('Uploading [:bar] :percent :etas', {
 	        complete: '>',
-	        incomplete: '∆',
+	        incomplete: '+',
 	        total: 100
 	      });
 
@@ -440,6 +440,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      // Remove Gzip from encoding if ico
 	      if (/\.ico/.test(fileName) && s3Params.ContentEncoding === 'gzip') delete s3Params.ContentEncoding;
+
+	      if (/\.css\.gz/.test(fileName)) {
+	        s3Params.ContentType = 'text/css';
+	        s3Params.ContentEncoding = 'gzip';
+	      }
 
 	      upload = this.client.uploadFile({
 	        localFile: file,
