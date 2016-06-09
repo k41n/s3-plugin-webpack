@@ -230,7 +230,7 @@ module.exports = class S3Plugin {
 
     var progressBar = new ProgressBar('Uploading [:bar] :percent :etas', {
       complete: '>',
-      incomplete: '∆',
+      incomplete: '+',
       total: 100
     })
 
