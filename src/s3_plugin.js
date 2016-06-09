@@ -245,6 +245,7 @@ module.exports = class S3Plugin {
         progressValue = calculateProgress() - definedModifier
 
         if (progressValue !== progressTracker) {
+          console.log('progressValue = ', progressValue)
           progressBar.update(progressValue)
           progressTracker = progressValue
         }
