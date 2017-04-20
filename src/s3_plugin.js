@@ -277,6 +277,7 @@ module.exports = class S3Plugin {
     }
 
     if (/\.js\.gz/.test(fileName)) {
+      console.log('Settings for', filename)
       s3Params.ContentType = 'application/octet-stream'
       s3Params.ContentEncoding = 'gzip'
     }
