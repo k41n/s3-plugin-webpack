@@ -447,7 +447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      if (/\.js\.gz/.test(fileName)) {
-	        s3Params.ContentType = 'application/octet-stream';
+	        s3Params.ContentType = 'text/javascript';
 	        s3Params.ContentEncoding = 'gzip';
 	      }
 
