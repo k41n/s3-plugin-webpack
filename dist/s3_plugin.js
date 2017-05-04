@@ -451,6 +451,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        s3Params.ContentEncoding = 'gzip';
 	      }
 
+	      if (/\.otf\.gz/.test(fileName)) {
+	        s3Params.ContentType = 'font/opentype';
+	        s3Params.ContentEncoding = 'gzip';
+	      }
+
 	      upload = this.client.uploadFile({
 	        localFile: file,
 	        s3Params: s3Params
